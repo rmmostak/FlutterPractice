@@ -9,7 +9,7 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  String msg = "", check = "";
+  String msg = "Click number to play", check = "";
   int ran = 0;
 
   // ignore: non_constant_identifier_names
