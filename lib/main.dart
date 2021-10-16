@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_practice/about.dart';
+import 'package:flutter_practice/quiz.dart';
 
 void main() {
-  runApp(About());
+  runApp(Quiz());
 }
 
 class MyApp extends StatelessWidget {

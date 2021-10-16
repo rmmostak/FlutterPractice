@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
 class About extends StatelessWidget {
-  const About({ Key? key }) : super(key: key);
+  const About({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "Flutter Practice",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
@@ -39,7 +40,7 @@ class About extends StatelessWidget {
                 children: [
                   Container(
                     child: Text(
-                      "About Android Application",
+                      "About Mobile Application",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,
