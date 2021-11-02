@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _QuizState extends State<Quiz> {
                             ),
                           )),
                     ]),
-                    Row(
+                    Row (
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
@@ -86,6 +87,7 @@ class _QuizState extends State<Quiz> {
                               color: Colors.blue,
                               child: FlatButton(
                                 onPressed: () {
+                                  Alert(context: context, title: "Title", desc: "Description!").show();
                                   setState(() {
                                     Match(2);
                                     //print("clicked!");
