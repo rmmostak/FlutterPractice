@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_practice/bmi.dart';
+import 'package:flutter_practice/quiz.dart';
+import 'package:flutter_practice/sign_up.dart';
 import 'package:flutter_practice/story_brain.dart';
 
 void main() {
- runApp(Destini());
+ runApp(BMICalculator());
 }
   StoryBrain storyBrain=StoryBrain();
 
