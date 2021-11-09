@@ -6,3 +6,5 @@
 <img src="https://github.com/rmproduct/rmproduct/blob/main/icons/about_app_into.png" height="640" width="340">
 <h3>Simple number matching quiz app</h3>
 <img src="https://github.com/rmproduct/rmproduct/blob/main/icons/quiz_intro.gif" height="640" width="340">
+<h3>BMI Calculator UI</h3>
+<img src="https://github.com/rmproduct/rmproduct/blob/main/icons/bmi_calculator.png" height="640" width="340">
