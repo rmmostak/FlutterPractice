@@ -9,9 +9,10 @@ class BMICalculator extends StatefulWidget {
 
 class _BMICalculatorState extends State<BMICalculator> {
 
-int start=120;
+int start=140;
 int weight=50;
 int age=20;
+Color bgColor=Color(0xff1f2427);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ int age=20;
         backgroundColor: Colors.black54,
         appBar: AppBar(
           title: Text("BMI Calculator"),
-          backgroundColor: Colors.deepOrange,
+          backgroundColor: Color(0xff1f2427),
         ),
         body: SafeArea(
           child: Column(
@@ -30,42 +31,38 @@ int age=20;
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Color(0xff1f2427),
-                          borderRadius: BorderRadius.circular(15)
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            print("Male");
+                            bgColor=Color(0xffe91963);
+                          });
+                        },
+                        child: Reusable(
+                          color: bgColor,
+                          widgetChild:ChildContent(
+                            icon: Icons.male,
+                            text: "Male",
+                          )
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(height: 50,
-                            width: 50,
-                            child: Image(image: AssetImage("images/male.png")),),
-                            SizedBox(height: 12,),
-                            Text("Male", style: TextStyle(color: Colors.grey, fontSize: 18),)
-                          ],
-                        ),
-                      ),
+                      )
                     ),
                     Expanded(
-                      child: Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Color(0xff1f2427),
-                          borderRadius: BorderRadius.circular(15)
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            print("Female");
+                            bgColor=Color(0xffe91963);
+                          });
+                        },
+                        child: Reusable(
+                          color: bgColor,
+                          widgetChild: ChildContent(
+                            icon: Icons.female,
+                            text: "Female",
+                          ),
                         ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(height: 50,
-                            width: 50,
-                            child: Image(image: AssetImage("images/female.png")),),
-                            SizedBox(height: 12,),
-                            Text("Female", style: TextStyle(color: Colors.grey, fontSize: 18),)
-                          ],
-                        ),
-                      ),
+                      )
                     )
                   ],
                 ),
@@ -74,38 +71,32 @@ int age=20;
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Color(0xff1f2427),
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        child: Column(
+                      child: Reusable(
+                        color: Color(0xff1f2427),
+                        widgetChild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Height", style: TextStyle(fontSize: 18, color: Colors.grey),),
-                            Container(
-                              margin: EdgeInsets.all(5),
-                              alignment: Alignment.bottomCenter,
-                              child: Row(
+                            Text("Height", style: TextStyle(fontSize: 25, color: Colors.white),),
+                            Reusable(
+                              color: Color(0xff1f2427),
+                              widgetChild: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("$start", style: TextStyle(color: Colors.white, fontSize: 30),),
-                                Text("cm", style: TextStyle(color: Colors.grey,),)
-                                
-                              ],
-                            ),
+                                children: [
+                                  Text("$start", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
+                                  Text("cm", style: TextStyle(color: Colors.white),)
+                                ],
+                              )
                             ),
                             Slider(
-                                  value: start.toDouble(),
-                                  min: 120,
-                                  max:  230,
-                                  onChanged: (double changeVal) {
-                                    setState(() {
-                                      start=changeVal.round();
-                                    });
-                                  },
-                                )
+                              value: start.toDouble(),
+                              min: 120,
+                              max:  230,
+                              onChanged: (double changeVal) {
+                                setState(() {
+                                  start=changeVal.round();
+                                });
+                              },
+                            )
                           ],
                         ),
                       ),
@@ -117,132 +108,152 @@ int age=20;
                 child: Row(
                   children: [
                     Expanded(
-                      child: Container(
-                        height: 180,
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Color(0xff1f2427),
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        child: Column(
+                      child: Reusable(
+                        color: Color(0xff1f2427),
+                        widgetChild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Weight", style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text("$weight", style: TextStyle(color: Colors.white, fontSize: 30),),
-                            Row(
+                            SizedBox(height: 5,),
+                            Text("$weight", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
+                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                RawMaterialButton(
+                                Expanded(child: RawMaterialButton(
+                                  padding: EdgeInsets.only(left: 0, right: 0),
                                   onPressed: () {
                                     setState(() {
                                       weight++;
                                     });
                                   },
-                                  fillColor: Colors.deepPurple,
-                                  constraints: BoxConstraints.tightFor(
-                                    height: 40,
-                                    width: 40,
-                                  ),
-                                  child: Container(
-                                    margin: EdgeInsets.all(5),
-                                    child: Image(image: AssetImage("images/plus.png")),
-                                  )),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  RawMaterialButton(
+                                  child: Icon(Icons.add_circle, size: 30, color: Colors.white,),
+                                )),
+                                Expanded(child: RawMaterialButton(
+                                  padding: EdgeInsets.only(left: 0, right: 0),
                                   onPressed: () {
                                     setState(() {
                                       weight--;
                                     });
                                   },
-                                  fillColor: Colors.deepPurple,
-                                  constraints: BoxConstraints.tightFor(
-                                    height: 40,
-                                    width: 40,
-                                  ),
-                                  child: Container(
-                                    margin: EdgeInsets.all(5),
-                                    child: Image(image: AssetImage("images/minus.png")),
-                                  ))
+                                  child: Icon(Icons.remove_circle, color: Colors.white, size: 30,)
+                                  )
+                                )
                               ],
                             )
-
-                          ],
-                        ),
-                      ),
+                          ] 
+                        )
+                      )
                     ),
                     Expanded(
-                      child: Container(
-                        height: 180,
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          color: Color(0xff1f2427),
-                          borderRadius: BorderRadius.circular(15)
-                        ),
-                        child: Column(
+                      child: Reusable(
+                        color: Color(0xff1f2427),
+                        widgetChild: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Age", style: TextStyle(color: Colors.white, fontSize: 18),),
-                            Text("$age", style: TextStyle(color: Colors.white, fontSize: 30),),
-                            Row(
+                            SizedBox(height: 5,),
+                            Text("$age", style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),),
+                           Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                RawMaterialButton(
+                                Expanded(child: RawMaterialButton(
+                                  padding: EdgeInsets.only(left: 0, right: 0),
                                   onPressed: () {
                                     setState(() {
                                       age++;
                                     });
                                   },
-                                  fillColor: Colors.deepPurple,
-                                  constraints: BoxConstraints.tightFor(
-                                    height: 40,
-                                    width: 40,
-                                  ),child: Container(
-                                    margin: EdgeInsets.all(5),
-                                    child: Image(image: AssetImage("images/plus.png")),
-                                  )),
-                                  SizedBox(
-                                    width: 5,
-                                  ),
-                                  RawMaterialButton(
+                                  child: Icon(Icons.add_circle, size: 30, color: Colors.white,),
+                                )),
+                                Expanded(child: RawMaterialButton(
+                                  padding: EdgeInsets.only(left: 0, right: 0),
                                   onPressed: () {
                                     setState(() {
                                       age--;
                                     });
                                   },
-                                  fillColor: Colors.deepPurple,
-                                  constraints: BoxConstraints.tightFor(
-                                    height: 40,
-                                    width: 40,
-                                  ),child: Container(
-                                    margin: EdgeInsets.all(5),
-                                    child: Image(image: AssetImage("images/minus.png")),
-                                  )),
+                                  child: Icon(Icons.remove_circle, color: Colors.white, size: 30,)
+                                  ))
                               ],
                             )
-
-                          ],
-                        ),
-                      ),
+                          ] 
+                        )
+                        )
                     )
                   ],
                 ),
               ),
-                Container(
-                  height: 60,
-                  width: double.infinity,
-                  color: Colors.deepOrange,
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(top: 15),
-                  child: Text("Calculate Result",
-                  style: TextStyle(fontSize: 25, color: Colors.white),),
-                
-              )
+                TextButton(
+                  onPressed: () {
+                    setState(() {
+                      print("Calculate Pressed!!");
+                    });
+                  },
+                  child: Container(
+                    height: 60,
+                    width: double.infinity,
+                    color: Colors.red,
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(top: 15),
+                    child: Text("Calculate Result",
+                    style: TextStyle(fontSize: 25, color: Colors.white),),
+                  ),
+                )
             ],
           ),
         )
-        ),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class Reusable extends StatelessWidget {
+  
+  Reusable({required this.color, this.widgetChild}) {}
+
+  Color color;
+  Widget?widgetChild;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(15)
+      ),
+      child: widgetChild,
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class ChildContent extends StatelessWidget {
+  
+  ChildContent({required this.icon, required this.text}) {}
+  
+  IconData icon;
+  String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon, 
+            size: 60,
+            color: Colors.white
+            ),
+          Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25
+            ),
+          )
+        ],
     );
   }
 }
